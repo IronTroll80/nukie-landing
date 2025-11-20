@@ -22,14 +22,44 @@
     box-shadow: 0px 0px 15px #bebebe;
 }
 
+.imgContainer{
+    display: flex;
+    align-items: left;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
 .container h4{
     font-weight: 500;
     font-size: 20px;
-    color: #52525b;
+    color: #222255;
     text-align: left;
     width: 100%;
-    margin-bottom: 1.5rem;
 }
+
+.subtext {
+    font-size: 13px;
+    color: #242440;
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.resend{
+    width: 100%;
+    color: #242440;
+    text-align: right;
+    cursor: pointer;
+    margin-top: -1rem;
+    font-size: 13px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.resend:hover{
+    text-decoration: underline;
+}
+
 
 .footing{
     width: 500px;
@@ -46,7 +76,6 @@
 .footing b{
     cursor: pointer;
     color: #242440;
-    margin-left: 1rem;
 }
 
 .footing b:hover{

@@ -1,0 +1,25 @@
+.labelContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 406px;
+}
+
+.supportText{
+    color: #242440;
+    font-size: 14px;
+}
+
+.label{
+    color: #52525B;
+    font-size: 14px;
+}
+
+.input{
+    border: 1px solid #24224031;
+    font-size: 16px;
+    padding: .7rem;
+    width: 406px;
+    border-radius: 5px;
+    margin-top: .2rem;
+    margin-bottom: 1rem;
+}

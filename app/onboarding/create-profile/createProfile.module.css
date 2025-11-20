@@ -22,13 +22,27 @@
     box-shadow: 0px 0px 15px #bebebe;
 }
 
+.imgContainer{
+    display: flex;
+    align-items: left;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
 .container h4{
     font-weight: 500;
     font-size: 20px;
-    color: #52525b;
+    color: #222255;
     text-align: left;
     width: 100%;
-    margin-bottom: 1.5rem;
+}
+
+.subtext {
+    font-size: 13px;
+    color: #242440;
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .footing{
@@ -46,7 +60,6 @@
 .footing b{
     cursor: pointer;
     color: #242440;
-    margin-left: 1rem;
 }
 
 .footing b:hover{
@@ -60,4 +73,20 @@
     margin-top: .2rem;
     gap: 7%;
     margin-left: .8rem;
+}
+
+.loadingContainer{
+    width: 100%;
+    height: 5px;
+    background-color: #f7f7f7;
+}
+
+.loader{
+    width: 50%;
+    height: 5px;
+    background-color: #24a469;
+}
+
+.subtext b{
+    color: #24a469;
 }
