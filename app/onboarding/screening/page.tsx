@@ -11,7 +11,7 @@ import AuthInput from '@/app/components/authInput'
 export default function Screening(){
 
 
-    const [activePage, setActivePage] = useState('verify-otp')
+    const [activePage, setActivePage] = useState('verify-mobile')
 
     return (
         <>

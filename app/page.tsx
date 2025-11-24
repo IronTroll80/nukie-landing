@@ -1,9 +1,9 @@
-import Sidebar from "./components/general_test_comp1";
+import Login from "./auth/login/page";
 
 export default function  Page(){
   return(
     <>
-      <Sidebar/>
+      <Login/>
     </>
   )
 }

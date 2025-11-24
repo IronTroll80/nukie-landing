@@ -17,8 +17,10 @@ export default function Login(){
                 <div className= {styles.container}>
                    {activePage === 'signin' && <>
                         <h4>Sign in to your account</h4>
-                        <AuthInput type = 'email' label = "Email" placeholder='Enter your email'/>
-                        <AuthInput type = 'password'  label = "Password" supportText="Forgot Your Password?" placeholder='Enter Your Password' />
+                        <div className= {styles.columnSpacer}>
+                            <AuthInput type = 'email' label = "Email" placeholder='Enter your email'/>
+                            <AuthInput type = 'password'  label = "Password" supportText="Forgot Your Password?" placeholder='Enter Your Password' />
+                        </div>
                         <SignInCheckbox/>
                         <AuthButton content="Continue"/>
                     </>}
@@ -31,9 +33,11 @@ export default function Login(){
 
                     {activePage === 'resetPassword' && <>    
                         <h4>Reset Password</h4>
+                        <div className= {styles.columnSpacer}>
                         <AuthInput type = 'email' label = "Email" placeholder='Enter your email'/>
                         <AuthInput type = 'number'  label = "OTP" placeholder='Enter the six-digit otp sent to your email address'/>
                         <AuthInput type = 'password' label = "New Password" placeholder='Enter your new password'/>
+                        </div>
                         <AuthButton content="Update"/>
                     </>}
 
