@@ -1,9 +1,17 @@
-import Login from "./auth/login/page";
+import About from "./components/about";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import Hero from "./components/hero";
+import ProductSection from "./components/productsSection";
+
 
 export default function  Page(){
   return(
     <>
-      <Login/>
+    <Hero/>
+    <ProductSection/>
+    <About/>
+    <Footer/>
     </>
   )
 }
