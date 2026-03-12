@@ -64,8 +64,8 @@
 .offerings p{
     font-size: 12px;
     padding: .5rem .8rem;
-    color: #003883;
-    border: 1px solid #003883;
+    color: #003983da;
+    background-color: #f2f2f2;
     border-radius: .5rem;
     cursor: pointer;
 }
