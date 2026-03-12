@@ -3,13 +3,13 @@
     padding: 1rem 2rem;
     gap: 1rem;
     justify-content: space-between;
-    width: 95%;
+    width: 90%;
     max-width: 1000px;
     align-items: center;
     border-radius: 16px;
     position: fixed;
     z-index: 9999999;
-    top: 30px;
+    top: 10px;
     background: rgba(74, 51, 169, 0.1);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter:  grayscale(50%) ;
@@ -21,8 +21,8 @@
 
 .imageContainer{
     position: relative;
-    width: 70px;
-    height: 16px;
+    width: 100px;
+    height: 24px;
     
 }
 
@@ -61,7 +61,7 @@
     background-color: #ddd;
     white-space: nowrap;
     left: 0;
-    margin-top: 20px;
+    margin-top: 0px;
     border-radius: 20px;
     font-size: 14px;
     align-items: center;
