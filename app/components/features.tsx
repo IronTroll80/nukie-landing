@@ -3,10 +3,11 @@
 import Image from 'next/image'
 import styles from './features.module.css'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Features(){
 
-    const [activeFeature, setActiveFeature] = useState(0)
+    const [activeFeature, setActiveFeature] = useState(1)
 
     const features = [
         {
@@ -32,18 +33,47 @@ export default function Features(){
     ]
 
     return(
-        <div className={styles.container}>  
+        <motion.div 
+            className={styles.container}
 
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+        >  
+
+            <div className={styles.right}>
+                <div className={styles.featureImage}>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeFeature}
+                            initial={{ opacity: 0, scale: 1.1 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 1.05 }}
+                            transition={{ duration: 0.5 }}
+                            style={{ width: '100%', height: '100%', position: 'relative' }}
+                        >
+                            <Image 
+                                src={features[activeFeature].image}
+                                alt="feature"
+                                fill
+                            />
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+            </div>
+            
             <div className={styles.left}>
                 <div className={styles.leftInner}>
-                     <div className={styles.badge}>
-                            <span className={styles.dot}></span>
-                            POINT OF SALE
+
+                    <div className={styles.badge}>
+                        <span className={styles.dot}></span>
+                        POINT OF SALE
                     </div>
 
                     <h1 className={styles.title}>
-                        Everything You Need to <br />
-                        <span>Manage Access Smarter</span>
+                        Everything You Need to 
+                        <span> Manage Access Smarter</span>
                     </h1>
 
                     <p className={styles.intro}>
@@ -51,63 +81,79 @@ export default function Features(){
                     </p>
 
                     <div className={styles.features}>
-                        {features.map((feature, index) => (
-                            <div key={index} className={styles.featureItem}>
-                                
-                                <h1 
-                                    className={styles.featureTitle} 
-                                    onClick={() => 
-                                        setActiveFeature(activeFeature === index ? -1 : index)
-                                    }
+                        {features.map((feature, index) => {
+
+                            const isOpen = activeFeature === index
+
+                            return(
+                                <motion.div 
+                                    key={index} 
+                                    className={styles.featureItem}
+
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: false }}
+                                    transition={{ delay: index * 0.1 }}
                                 >
-                                    {feature.title}
-                                    <span>
-                                        {activeFeature === index ? ' − ' : ' + '}
-                                    </span>
-                                </h1>
-
-                                {activeFeature === index && (
+                                    
                                     <div 
-                                        className={styles.featureImageMobile} 
-                                        style={{backgroundImage: `url(${feature.image})`}}
+                                        className={styles.featureTitle} 
+                                        onClick={() => 
+                                            setActiveFeature(isOpen ? -1 : index)
+                                        }
                                     >
-                                        <div className={styles.mobileImageContainer}>
-                                            <Image 
-                                                src="/screen.png"
-                                                alt="feature"
-                                                fill
-                                            />
-                                        </div>
-                                    </div>
-                                )}
+                                        {feature.title}
 
-                                <p className={
-                                    activeFeature === index
-                                    ? `${styles.featuresubTitle} ${styles.showFeature}`
-                                    : `${styles.featuresubTitle} ${styles.noShowFeature}`
-                                }>
-                                    {feature.description}
-                                </p>
-                                
-                            </div>
-                        ))}
+                                        <motion.span
+                                            animate={{ rotate: isOpen ? 180 : 0 }}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            {isOpen ? '−' : '+'}
+                                        </motion.span>
+                                    </div>
+
+                                    <AnimatePresence>
+                                        {isOpen && (
+                                            <motion.div 
+                                                className={styles.featureImageMobile}
+                                                style={{backgroundImage: `url(${feature.image})`}}
+
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.4 }}
+                                            >
+                                                <div className={styles.mobileImageContainer}>
+                                                    <Image 
+                                                        src="/screen.png"
+                                                        alt="feature"
+                                                        fill
+                                                    />
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+                                    <AnimatePresence>
+                                        {isOpen && (
+                                            <motion.p
+                                                initial={{ opacity: 0, height: 0, y: -10 }}
+                                                animate={{ opacity: 1, height: 'auto', y: 0 }}
+                                                exit={{ opacity: 0, height: 0, y: -10 }}
+                                                transition={{ duration: 0.4 }}
+                                                className={styles.featuresubTitle}
+                                            >
+                                                {feature.description}
+                                            </motion.p>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
 
-            <div className={styles.right}>
-                <div className={styles.featureImage}>
-                    {activeFeature !== -1 && (
-                        <Image 
-                            key={activeFeature}
-                            src={features[activeFeature].image}
-                            alt="feature"
-                            fill
-                        />
-                    )}
-                </div>
-            </div>
-
-        </div>
+        </motion.div>
     )
 }

@@ -4,6 +4,9 @@
     width: 100%;
     margin: 2rem auto;
     align-items: center;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .left{
@@ -24,8 +27,8 @@
 
 .leftInner{
     width: 100%;
-    max-width: 520px;
-    padding: 2rem;
+    max-width: 480px;
+    padding: 1rem;
 }
 
 .badge{
@@ -49,7 +52,7 @@
 
 .title{
     font-size: clamp(2rem, 3vw, 2.6rem);
-    font-weight: 700;
+    font-weight: 500;
     margin-top: 1rem;
     line-height: 1.2;
 }
@@ -72,16 +75,23 @@
     margin-top: 2rem;
 }
 
+
 .featureItem{
     display: flex;
     flex-direction: column;
     gap: .8rem;
-    padding: .6rem 0;
+    padding: .4rem 0;
     border-top: 1px solid #e6e6e6;
+
+    transition: background 0.3s ease, padding-left 0.3s ease;
+}
+
+.featureItem:hover{
+    background: #fafafa;
 }
 
 .featureTitle{
-    font-weight: 700;
+    font-weight: 600;
     font-size: 16px;
     display: flex;
     justify-content: space-between;
@@ -90,12 +100,29 @@
 
 .featureTitle span{
     font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.rotate{
+    transform: rotate(180deg);
 }
 
 .featuresubTitle{
     font-size: 15px;
     color: #777;
     animation: fadeDown .3s ease;
+}
+
+.fadeIn{
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fadeOut{
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 @keyframes fadeDown{
@@ -109,8 +136,41 @@
     }
 }
 
-.noShowFeature{
-    display: none;
+.featureItem{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.fadeIn .featureItem{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fadeIn .featureItem:nth-child(1){ transition-delay: 0.1s; }
+.fadeIn .featureItem:nth-child(2){ transition-delay: 0.3s; }
+.fadeIn .featureItem:nth-child(3){ transition-delay: 0.5s; }
+.fadeIn .featureItem:nth-child(4){ transition-delay: 0.8s; }
+
+.featuresubTitle{
+    font-size: 15px;
+    color: #777;
+    overflow: hidden;
+
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+
+    transition: 
+        max-height 0.5s ease,
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.showFeature{
+    max-height: 200px; 
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .featureImageMobile{
@@ -146,10 +206,23 @@
     overflow: hidden;
 }
 
+@keyframes scaleUp {
+    from{transform: scale(0);}
+    to{transform: scale(1);}
+}
+
 .featureImage img{
     object-fit: cover;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease, transform 0.6s ease;
+    animation: scaleup.5s ease-in-out forwards;
+    transform: scale(1.05);
 }
+
+.featureImage img.active{
+    opacity: 1;
+    transform: scale(1);
+}
+
 
 @media (min-width: 1024px){
 

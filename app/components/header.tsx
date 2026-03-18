@@ -42,6 +42,20 @@ const ChevronRight = (
   </svg>
 )
 
+const globeIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7" 
+  d="M12 21a9 9 0 1 0 0-18m0 18a9 9 0 1 1 0-18m0 18c2.761 0 3.941-5.163 3.941-9S14.761 3 12 3m0 18c-2.761 0-3.941-5.163-3.941-9S9.239 3 12 3M3.5 9h17m-17 6h17"/></svg>
+)
+
+const questionIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7">
+    <path d="M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0"/><path d="M12 13.496c0-2.003 2-1.503 2-3.506c0-2.659-4-2.659-4 0m2 6.007v-.5"/></g></svg>
+)
+
+const userIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7" d="M15 7.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0m4.5 13c-.475-9.333-14.525-9.333-15 0"/></svg>
+)
+
 const navItems = ['Products', 'Resources', 'Company', 'Wale']
 
 const products = [
@@ -129,8 +143,13 @@ export default function Header() {
             )
           })}
         </div>
+        <div className = {styles.extras}>
+          <button className={styles.navButton}>Book a demo</button>
+            {globeIcon}
+            {questionIcon}
+            <button className= {styles.signIn}>{userIcon}</button>
+        </div>
 
-        <button className={styles.navButton}>Book a demo</button>
         <div className={styles.hamburger} onClick={() => setMobileOpen(prev => !prev)}>
           <span />
           <span />

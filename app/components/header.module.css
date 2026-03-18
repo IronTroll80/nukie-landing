@@ -91,6 +91,23 @@
     cursor: pointer;
 }
 
+.extras{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.extras svg{
+    width: 25px;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.signIn{
+    display: inline-flex;
+    font-size: 14px;
+    align-items: center;
+    cursor: pointer;
+}
 
 .dropdown{
     display: flex;
@@ -198,14 +215,14 @@
   background: #000;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
   .navItems {
     display: none;
   }
 
   .navButton {
-    display: none;
+    display: block;
   }
 
   .hamburger {

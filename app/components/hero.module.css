@@ -9,6 +9,7 @@
     justify-content: center;
     margin-top: 70px;
     overflow: hidden;
+    padding-top: 1rem;
 }
 
 .container span{
@@ -49,7 +50,7 @@
 
 .title{
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 1rem auto;
     color: #000;
     width: 100%;
@@ -120,7 +121,7 @@
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .buttonGroup{
         flex-direction: row;
         gap: 1rem;
@@ -133,6 +134,7 @@
     .container{
         flex-direction: row;
         margin-top: 70px;
+        padding: 0;
     }
 
     .right video{

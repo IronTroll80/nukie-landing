@@ -9,11 +9,12 @@ export default function CTA (){
         <div className= {styles.container}>
             <p className= {styles.sub}><i><FaCircle/></i> Your Move</p>
             <h1>
-                <span>Sign up with NukiePass</span> and take control.
+                Verify Access Today. 
+                <span> Sign up with NukiePass</span> and take control.
             </h1>
             <div className= {styles.images}>
                 {images.map((image, index)=>(
-                    <Image src={'/' + image} alt='user' key={index} width={30} height={30}/>
+                    <Image src={'/' + image} alt='user' key={index} width={54} height={54}/>
                 ))}
             </div>
             <button className= {styles.button}>Contact a Member of the team </button>

@@ -12,7 +12,7 @@ export default function  Page(){
     <>
     <Header/>
     <Hero/>
-    {/* <Features/> */}
+    <Features/>
     <ProductSection/>
     <CTA/>
     {/* <About/> */}
