@@ -5,7 +5,7 @@ export default function Footer (){
     return(
         <>
         
-        <div className= {styles.container} style={{ backdropFilter: 'blur(15px)' }}>
+        <div className= {styles.container}>
             <div className= {styles.top}>
                 <Image src = '/logo.png' alt = 'logo' width = {150} height = {120}/>
                 <div className= {styles.footerSection}>

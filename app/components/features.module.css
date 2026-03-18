@@ -1,0 +1,181 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 2rem auto;
+    align-items: center;
+}
+
+.left{
+    width: 100%;
+}
+
+.leftInner{
+    width: 100%;
+    max-width: 520px;
+    padding: 2rem;
+}
+
+.subtitle{
+    font-size: 12px;
+    color: #888;
+}
+
+
+.leftInner{
+    width: 100%;
+    max-width: 520px;
+    padding: 2rem;
+}
+
+.badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #f1f3f5;
+    color: #555;
+    font-weight: 500;
+}
+
+.dot{
+    width: 6px;
+    height: 6px;
+    background: #003883;
+    border-radius: 50%;
+}
+
+.title{
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 700;
+    margin-top: 1rem;
+    line-height: 1.2;
+}
+
+.title span{
+    color: #003883;
+}
+
+.intro{
+    margin-top: .8rem;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.features{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.featureItem{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    padding: .6rem 0;
+    border-top: 1px solid #e6e6e6;
+}
+
+.featureTitle{
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.featureTitle span{
+    font-size: 20px;
+}
+
+.featuresubTitle{
+    font-size: 15px;
+    color: #777;
+    animation: fadeDown .3s ease;
+}
+
+@keyframes fadeDown{
+    from{
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.noShowFeature{
+    display: none;
+}
+
+.featureImageMobile{
+    width: 100%;
+    aspect-ratio: 1/1.4;
+    border-radius: .6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.mobileImageContainer{
+    position: relative;
+    width: 70%;
+    aspect-ratio: 1/2;
+}
+
+.mobileImageContainer img{
+    border-radius: .5rem;
+}
+
+.right{
+    display: none;
+}
+
+.featureImage{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 550px;
+    overflow: hidden;
+}
+
+.featureImage img{
+    object-fit: cover;
+    transition: opacity 0.4s ease;
+}
+
+@media (min-width: 1024px){
+
+    .container{
+        flex-direction: row;
+    }
+
+    .left{
+        flex: 0 0 43%;
+        display: flex;
+        justify-content: center; 
+    }
+
+
+    .right{
+        flex: 0 0 57%;
+        display: block;
+        position: relative;
+        height: calc(100svh + 2 * 12rem);
+    }
+
+    .featureImage{
+        min-height: 600px;
+    }
+
+    .featureImageMobile{
+        display: none;
+    }
+}

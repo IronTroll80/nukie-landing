@@ -14,35 +14,8 @@ interface ProductProps{
 
 export default function Product({title, subtitle, offerings, image, second}: ProductProps){
 
-    const ref = useRef<HTMLDivElement | null>(null)
-    const [visible, setVisible] = useState(false)
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if(entry.isIntersecting){
-                    setVisible(true)
-                }
-            },
-            { threshold: 0.2 }
-        )
-
-        if(ref.current){
-            observer.observe(ref.current)
-        }
-
-        return () => {
-            if(ref.current){
-                observer.unobserve(ref.current)
-            }
-        }
-    }, [])
-
     return(
-        <div 
-            ref={ref}
-            className={`${styles.container} ${visible ? styles.show : ''}`}
-        >
+        <div className={`${styles.container} ${styles.show }`} >
             <div className={second ? `${styles.left} ${styles.orderSecond}` : `${styles.left}`}>
                 <h1 className={styles.title}>{title}</h1>
                 <p className={styles.subtitle}>{subtitle}</p>

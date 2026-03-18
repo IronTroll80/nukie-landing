@@ -1,46 +1,81 @@
 .container{
-    background-image: url('/hero.png');
     width: 100%;
-    padding: 2rem;
     background-position: center;
     background-size: cover;
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    overflow: hidden;
+}
+
+.container span{
+    color: #003883;
+}
+
+.left{
+    margin: auto; 
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(242, 242, 242);
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.heroContent{
-    margin: auto; 
+.leftContent{
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    gap: .3rem;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .title{
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 600;
     margin: 1rem auto;
-    text-align: center;
-    color: white;
+    color: #000;
     width: 100%;
+    font-size: clamp(2.1875rem, 2.6vw, 3rem);
 }
 
 .subtitle{
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 400;
-    text-align: center;
-    color: white;
+    color: #555;
+    line-height: 28px;
 }
 
-.button{
+.buttonGroup{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.mainButton{
     border: none;
-    background-color: #fff;
-    color: #003883;
+    background-color: #003883;
+    color: #fff;
     padding: .6rem 1rem;
     max-width: 200px;
-    margin: auto;
     font-size: 12px;
     margin-top: 1rem;
     border-radius: .5rem;
@@ -53,48 +88,79 @@
     transform: scale(1.1) translateY(-4px);
 }
 
-@media (min-width: 768px) {
-
-    .title{
-        font-size: 48px;
-        width: 90%;
-        margin: auto;
-    }
-
-    .subtitle{
-        font-size: 14px;
-        width: 63%;
-        margin: 1rem auto;
-    }
-
-
+.secondaryButton{
+    border: 1px solid #003883;
+    color: #003883;
+    padding: .6rem 1rem;
+    max-width: 200px;
+    font-size: 12px;
+    margin-top: 1rem;
+    border-radius: .5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .4s;
 }
 
+.button:hover{
+    transform: scale(1.1) translateY(-4px);
+}
+
+
+.right{
+    width: 100%;
+    height: 100%;
+}
+
+.right video{
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+}
+
+
+
+@media (min-width: 768px) {
+    .buttonGroup{
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .left{
+        padding: 3rem;
+    }
+
+    .container{
+        flex-direction: row;
+        margin-top: 70px;
+    }
+
+    .right video{
+        height: 100%;
+    }
+        
+}
 
 @media (min-width: 1024px) {
 
     .container{
-        height: 600px;
+        height: 500px;
     }
 
     .heroContent{
         max-width: 1200px;
     }
 
-    .title{
-        font-size: 64px;
-        max-width: 900px;
-        margin-bottom: 1rem;
-    }
-
-    .subtitle{
-        font-size: 20px;
-        width: 620px;
-        margin: 1rem auto;
-    }
-
     .button{
         margin-top: 2rem;
         font-size: 14px;
     }
+}
+
+@media (min-width: 1200px) {
+
+    .container{
+        height: 550px;
+    }
+
 }
