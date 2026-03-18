@@ -7,7 +7,7 @@ export default function Footer (){
         
         <div className= {styles.container}>
             <div className= {styles.top}>
-                <Image src = '/logo.png' alt = 'logo' width = {150} height = {120}/>
+                <Image src = '/logoWhite.png' alt = 'logo' width = {150} height = {120}/>
                 <div className= {styles.footerSection}>
                     <b>Learn</b>
                     <p>How It Works</p>
