@@ -167,7 +167,7 @@
 .product svg{
     width: 20px;
     aspect-ratio: 1;
-    strokeWidth: 1;
+    stroke-Width: 1;
 }
 
 .product h3{
@@ -209,10 +209,24 @@
   cursor: pointer;
 }
 
-.hamburger span {
+
+.hamburger span { 
   width: 20px;
   height: 2px;
   background: #000;
+  transition: .3s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(6px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-6px);
 }
 
 @media (max-width: 1024px) {
@@ -222,7 +236,11 @@
   }
 
   .navButton {
-    display: block;
+    display: none;
+  }
+
+  .extras{
+    display: none;
   }
 
   .hamburger {
@@ -233,25 +251,130 @@
   position: fixed;
   top: 70px;
   right: 0;
-  width: 80%;
-  height: 100vh;
-  transform: translateX(100%);
-  transition: .3s;
-  z-index: 9999999;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: #fff;
+  /* transform: translateX(100%); */
+  transition: 0.3s ease;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
 }
 
 .mobileNav.open {
   transform: translateX(0);
 }
-  .mobileDropdown {
-    padding-left: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-  }
+
+.mobileNavItem p {
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mobileDropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.mobileProduct {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.mobileProductHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.mobileProductFeatures {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background-color: #f9f9f9;
+}
+
+.mobileFeature h5 {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.mobileFeature p {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+.mobileNav svg{
+    width: 20px;
+}
+
+.open {
+  transform: translateX(0);
+}
+
 
   /* override big desktop dropdown */
   .dropdown {
     display: none;
   }
+}
+
+/* Smooth animated dropdown for mobile */
+.mobileDropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  max-height: 0;
+}
+
+.mobileDropdown.open {
+  opacity: 1;
+  /* max-height should be dynamically set via inline style in React */
+}
+
+/* Add subtle hover for sub-items */
+.mobileFeature p {
+  padding-left: 1rem;
+  transition: color 0.2s;
+}
+
+.mobileFeature p:hover {
+  color: #003883;
+}
+
+/* Icon spacing */
+.mobileProductHeader span:first-child {
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Optional: arrow rotate animation */
+.mobileProductHeader span:last-child {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.mobileProductHeader span:last-child.open {
+  transform: rotate(180deg);
 }

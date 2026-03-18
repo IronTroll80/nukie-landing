@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import {useState } from 'react'
 import styles from './header.module.css'
+import { FaBuilding, FaSchool, FaUsers } from 'react-icons/fa'
 
 const ChevronDown = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -56,7 +57,19 @@ const userIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7" d="M15 7.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0m4.5 13c-.475-9.333-14.525-9.333-15 0"/></svg>
 )
 
-const navItems = ['Products', 'Resources', 'Company', 'Wale']
+const navItems = [
+  { 
+    title: 'Products', 
+    content: [
+      { title: 'For Schools', icon: <FaSchool />, features: ['Student Movement', 'Bus Handover', 'Parent Drop-off'] },
+      { title: 'For Estates', icon: <FaBuilding />, features: ['Manage Residents', 'Manage Visitors', 'Gate Approvals'] },
+      { title: 'For Offices', icon: <FaUsers />, features: ['Manage Employees', 'Monitor Staff', 'Track Tasks'] },
+    ]
+  },
+  { title: 'Resources', content: [{ title: 'Blog', icon: <FaUsers /> }, { title: 'Help Center', icon: <FaUsers /> }] },
+  { title: 'Company', content: [{ title: 'About', icon: <FaUsers /> }, { title: 'Careers', icon: <FaUsers /> }] },
+  { title: 'Wale', content: [{ title: 'Contact', icon: <FaUsers /> }] }
+]
 
 const products = [
                   {
@@ -112,10 +125,14 @@ const products = [
                   }
                 ]
 
+
+                
 export default function Header() {
   const [active, setActive] = useState<number>(-1)
   const [activeProduct, setActiveProduct] = useState (0)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState<number | null>(null)
+  const [activeSub, setActiveSub] = useState<number | null>(null)
 
   function toggleNav(index: number) {
     setActive(prev => (prev === index ? -1 : index))
@@ -138,7 +155,7 @@ export default function Header() {
                 onClick={() => toggleNav(index)}
                 className={isActive ? styles.active : styles.inactive}
               >
-                {item} {isActive ? ChevronUp : ChevronDown}
+                {item.title} {isActive ? ChevronUp : ChevronDown}
               </p>
             )
           })}
@@ -150,7 +167,10 @@ export default function Header() {
             <button className= {styles.signIn}>{userIcon}</button>
         </div>
 
-        <div className={styles.hamburger} onClick={() => setMobileOpen(prev => !prev)}>
+        <div 
+          className={`${styles.hamburger} ${mobileOpen ? styles.open : ''}`} 
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
           <span />
           <span />
           <span />
@@ -204,34 +224,59 @@ export default function Header() {
           </div>
         </div>
       )}
-      {/* {mobileOpen && (
-        <div className={styles.mobileNav}>
-          {navItems.map((item, index) => {
-            const isActive = active === index
 
+      {mobileOpen && (
+        <div className={styles.mobileNav}>
+          {navItems.map((item, idx) => {
+            const isActive = activeTab === idx
             return (
-              <div key={index}>
+              <div key={idx} className={styles.mobileNavItem}>
                 <p
-                  onClick={() => toggleNav(index)}
+                  onClick={() => {
+                    setActiveTab(isActive ? null : idx)
+                    setActiveSub(null)
+                  }}
                   className={isActive ? styles.active : styles.inactive}
                 >
-                  {item} {isActive ? ChevronUp : ChevronDown}
+                  {item.title} {isActive ? ChevronUp : ChevronDown}
                 </p>
 
-                {isActive && (
-                  <div className={styles.mobileDropdown}>
-                    {products.map((product, i) => (
-                      <div key={i} className={styles.product}>
-                        <h4>{product.title}</h4>
+                {/* Animated dropdown */}
+                <div
+                  className={`${styles.mobileDropdown} ${isActive ? 'open' : ''}`}
+                  style={{ maxHeight: isActive ? `${item.content.length * 100}px` : '0' }}
+                >
+                  {item.content.map((subItem, subIdx) => {
+                    const isSubActive = activeSub === subIdx
+                    return (
+                      <div key={subIdx} className={styles.mobileProduct}>
+                        <div
+                          className={styles.mobileProductHeader}
+                          onClick={() => setActiveSub(isSubActive ? null : subIdx)}
+                        >
+                          <span style={{ marginRight: '0.5rem' }}>{subItem.icon}</span>
+                          <h4>{subItem.title}</h4>
+                          <span>{isSubActive ? ChevronUp : ChevronDown}</span>
+                        </div>
+
+                        {isSubActive && 'features' in subItem && subItem.features && (
+                          <div className={styles.mobileProductFeatures}>
+                            {subItem.features.map((f, fIdx) => (
+                              <div key={fIdx} className={styles.mobileFeature}>
+                                <p>• {f}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    ))}
-                  </div>
-                )}
+                    )
+                  })}
+                </div>
               </div>
             )
           })}
         </div>
-      )} */}
+      )}
     </div>
   )
 }

@@ -53,10 +53,13 @@ export default function Features(){
                             transition={{ duration: 0.5 }}
                             style={{ width: '100%', height: '100%', position: 'relative' }}
                         >
-                            <Image 
-                                src={features[activeFeature].image}
-                                alt="feature"
-                                fill
+                            < motion.video 
+                                src="/hero.mp4" 
+                                autoPlay 
+                                muted 
+                                loop 
+                                playsInline 
+                                className= {styles.featureImage}
                             />
                         </motion.div>
                     </AnimatePresence>
@@ -114,23 +117,20 @@ export default function Features(){
 
                                     <AnimatePresence>
                                         {isOpen && (
-                                            <motion.div 
+                                            <motion.video
                                                 className={styles.featureImageMobile}
-                                                style={{backgroundImage: `url(${feature.image})`}}
+                                                src="/hero.mp4" 
+                                                autoPlay 
+                                                muted 
+                                                loop 
+                                                playsInline 
 
                                                 initial={{ opacity: 0, height: 0 }}
                                                 animate={{ opacity: 1, height: 'auto' }}
                                                 exit={{ opacity: 0, height: 0 }}
                                                 transition={{ duration: 0.4 }}
                                             >
-                                                <div className={styles.mobileImageContainer}>
-                                                    <Image 
-                                                        src="/screen.png"
-                                                        alt="feature"
-                                                        fill
-                                                    />
-                                                </div>
-                                            </motion.div>
+                                            </motion.video>
                                         )}
                                     </AnimatePresence>
 
