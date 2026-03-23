@@ -205,13 +205,12 @@
 .ctaButton {
   display: inline-flex;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: .7rem 1.5rem;
   margin-top: 0rem;
   background-color: #fba009;
   color: #1e1e1e;
   font-weight: 500;
   border-radius: 0.5rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   font-size: .9rem;
   transition: 0.3s;
