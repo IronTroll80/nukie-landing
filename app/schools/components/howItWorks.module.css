@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  padding: 5rem 0;
+  padding: 6rem 0 8rem;
   background: #fafafa;
   overflow: hidden;
 }
@@ -11,8 +11,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 4rem;
+  gap: 5rem;
 }
 
 .header {
@@ -22,6 +21,7 @@
   align-items: center;
   gap: 1rem;
   max-width: 600px;
+  margin: 0 auto;
 }
 
 .badge {
@@ -68,103 +68,27 @@
 
 .body {
   display: flex;
-  gap: 3rem;
-  width: 100%;
+  gap: 4rem;
   align-items: flex-start;
+  position: relative;
 }
 
-.chainColumn {
+.stickyCol {
   display: none;
 }
 
-.chainTrack {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  height: 100%;
-}
-
-.chainLine {
-  position: absolute;
-  left: 50%;
-  top: 28px;
-  bottom: 28px;
-  width: 2px;
-  background: #e8e8e8;
-  transform: translateX(-50%);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.chainFill {
-  width: 100%;
-  background: linear-gradient(to bottom, #003883, #60a5fa);
-  border-radius: 2px;
-}
-
-.chainNode {
-  position: relative;
-  z-index: 1;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  border: 2px solid #e0e0e0;
+.panelCard {
   background: #fff;
-  color: #bbb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  transition: background 0.35s, border-color 0.35s, box-shadow 0.35s, color 0.35s;
-  flex-shrink: 0;
-  margin: 24px 0;
-}
-
-.chainNode:first-of-type { margin-top: 0; }
-.chainNode:last-of-type { margin-bottom: 0; }
-
-.chainNodeActive {
-  color: #fff;
-}
-
-.nodeLabel {
-  position: absolute;
-  left: calc(100% + 12px);
-  white-space: nowrap;
-  font-size: 11px;
-  font-weight: 600;
-  color: #bbb;
-  letter-spacing: 0.04em;
-  transition: color 0.3s;
-}
-
-.nodeLabelActive {
-  color: #333;
-}
-
-.contentColumn {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  min-width: 0;
-}
-
-.card {
-  border-radius: .25rem;
+  border-radius: 18px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.07);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1.5px solid #efefef;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.cardGlow {
+.panelGlow {
   position: absolute;
   width: 200px;
   height: 200px;
@@ -174,139 +98,16 @@
   filter: blur(70px);
   opacity: 0.1;
   pointer-events: none;
+  z-index: 0;
   transition: background 0.4s;
 }
 
-.cardInner {
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
-  z-index: 1;
-}
-
-.cardTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cardIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  font-size: 20px;
-  flex-shrink: 0;
-  transition: background 0.3s, color 0.3s;
-}
-
-.cardTag {
-  display: inline-flex;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 100px;
-  margin-right: 0.5rem;
-}
-
-.cardNumber {
-  font-size: 12px;
-  font-weight: 600;
-  color: #ccc;
-  letter-spacing: 0.05em;
-}
-
-.cardTitle {
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  font-weight: 600;
-  color: #0d0d0d;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.cardDesc {
-  font-size: 14.5px;
-  color: #666;
-  line-height: 1.7;
-  margin: 0;
-}
-
-.cardFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
-  border-top: 1px solid #f0f0f0;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.progressPills {
-  display: flex;
-  gap: 0.35rem;
-  align-items: center;
-}
-
-.pill {
-  height: 4px;
-  width: 20px;
-  border-radius: 4px;
-  background: #e0e0e0;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: width 0.3s, background 0.3s;
-}
-
-.pillActive {
-  width: 32px;
-}
-
-.pillDone {
-  opacity: 0.5;
-}
-
-.navButtons {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.navBtn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1.5px solid #ddd;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  color: #aaa;
-  cursor: pointer;
-  transition: border-color 0.25s, color 0.25s, background 0.2s;
-}
-
-.navBtn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.navBtn:not(:disabled):hover {
-  background: #f5f7fa;
-}
-
-.cardVideo {
+.panelVideoWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/3;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .video {
@@ -322,137 +123,281 @@
   transition: background 0.4s;
 }
 
-.videoLabel {
+.videoTopRow {
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  top: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.videoLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: blink 1.8s ease infinite;
+  flex-shrink: 0;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.videoStepNum {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.06em;
+}
+
+.videoBottomRow {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+}
+
+.videoTag {
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 100px;
 }
 
-.stepList {
+.panelBody {
+  padding: 1.25rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
 }
 
-.stepRow {
+.panelTopRow {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  padding: 0.85rem 1rem;
-  border-radius: .25rem;
-  border: none;
-  border-left: 3px solid transparent;
-  background: transparent;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.25s, border-color 0.25s, transform 0.2s;
-  width: 100%;
+  justify-content: space-between;
 }
 
-.stepRow:hover {
-  background: #f5f7fa;
-}
-
-.stepRowActive {
-  border-radius: 0 .25rem .25rem 0;
-}
-
-.stepRowIcon {
+.panelIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: .25rem;
-  font-size: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  font-size: 17px;
   flex-shrink: 0;
   transition: background 0.3s, color 0.3s;
 }
 
-.stepRowText {
+.panelPills {
   display: flex;
+  gap: 0.3rem;
   align-items: center;
-  gap: 0.6rem;
+}
+
+.pill {
+  height: 3px;
+  width: 14px;
+  border-radius: 3px;
+  background: #e0e0e0;
+  transition: width 0.3s ease, background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.pillActive {
+  width: 24px;
+}
+
+.pillPast {
+  opacity: 0.6;
+}
+
+.panelTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0d0d0d;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.panelDesc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.scrollCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   min-width: 0;
 }
 
-.stepRowNum {
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: #ccc;
+.stepRow {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.stepSpine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-shrink: 0;
-  transition: color 0.25s;
+  padding-top: 1.4rem;
 }
 
-.stepRowTitle {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #333;
-  white-space: nowrap;
+.stepDot {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  z-index: 1;
+}
+
+.stepLine {
+  width: 2px;
+  flex: 1;
+  min-height: 32px;
+  background: #efefef;
+  margin-top: 4px;
+  border-radius: 2px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  position: relative;
 }
 
-.closing {
-  font-size: 15px;
+.stepLineFill {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+}
+
+.stepCard {
+  flex: 1;
+  background: #fff;
+  border-radius: 14px;
+  border: 1.5px solid #efefef;
+  padding: 1.4rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: border-color 0.3s, opacity 0.4s, box-shadow 0.3s;
+  min-width: 0;
+}
+
+.stepCardActive {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.stepCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stepTag {
+  font-size: 10px;
   font-weight: 600;
-  color: #003883;
-  text-align: center;
-  letter-spacing: 0.01em;
-  opacity: 0.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: #f5f5f5;
+  color: #aaa;
+  transition: color 0.3s, background 0.3s;
 }
 
-@media (min-width: 768px) {
-  .card {
-    flex-direction: row;
-  }
-
-  .cardInner {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .cardVideo {
-    width: 42%;
-    aspect-ratio: unset;
-    flex-shrink: 0;
-  }
+.stepNum {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ddd;
+  letter-spacing: 0.05em;
 }
 
-@media (min-width: 1024px) {
-  .section {
-    padding: 7rem 0;
-  }
+.stepTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+}
 
-  .chainColumn {
-    display: none;
-    flex-shrink: 0;
-    width: 100px;
+.stepDesc {
+  font-size: 13.5px;
+  color: #777;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.stepMobileVideo {
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 0.25rem;
+}
+
+.mobileVideoInner {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.mobileVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .stickyCol {
+    display: block;
+    flex: 0 0 320px;
     position: sticky;
     top: 100px;
     align-self: flex-start;
-    height: 560px;
   }
 
-  .chainTrack {
-    justify-content: space-between;
-    height: 100%;
+  .stepMobileVideo {
+    display: none;
   }
+}
 
-  .chainNode {
-    margin: 0;
-  }
-
-  .stepList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.4rem;
+@media (min-width: 1100px) {
+  .stickyCol {
+    flex: 0 0 380px;
   }
 }

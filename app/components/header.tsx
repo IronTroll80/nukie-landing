@@ -5,8 +5,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import styles from './header.module.css'
 import { FaBuilding, FaSchool, FaUsers, FaQuestionCircle, FaInfoCircle, FaPhone } from 'react-icons/fa'
 import { MdSecurity, MdDirectionsBus, MdFamilyRestroom, MdGroup, MdVisibility, MdGavel, MdPeople, MdMonitorHeart, MdTask, MdArticle } from 'react-icons/md'
+import Link from 'next/link'
 
-/* ─── Icons ─────────────────────────────────────────────── */
 const ChevronDown = ({ size = 14 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m5 8l5 5l5-5" />
@@ -40,7 +40,6 @@ const UserIcon = () => (
   </svg>
 )
 
-/* ─── Nav Data ───────────────────────────────────────────── */
 type MegaFeature = {
   title: string
   description: string
@@ -57,6 +56,7 @@ type MegaSection = {
   features: MegaFeature[]
   promoLabel: string
   promoImage: string
+  promoLink: string
 }
 
 type SimpleSection = {
@@ -91,6 +91,7 @@ const navData: NavItem[] = [
         // promoLabel: 'Trusted by 200+ schools',
         promoLabel: '',
         promoImage: '/school.png',
+        promoLink: '/schools',
       },
       {
         id: 1,
@@ -107,6 +108,7 @@ const navData: NavItem[] = [
         promoLabel: '',
         // promoLabel: 'Managing 500+ gated communities',
         promoImage: '/estate.png',
+        promoLink: '/estates',
       },
       {
         id: 2,
@@ -123,6 +125,7 @@ const navData: NavItem[] = [
         // promoLabel: 'Powering 1,000+ workplaces',
         promoLabel: '',
         promoImage: '/hero.png',
+        promoLink: '/offices',
       },
     ],
   },
@@ -205,9 +208,11 @@ export default function Header() {
   return (
     <div className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ''}`} ref={dropdownRef}>
       <div className={styles.bodyContainer}>
+        <Link href="/">
         <div className={styles.imageContainer}>
           <Image src="/logo.png" alt="logo" fill style={{ objectFit: 'contain' }} />
         </div>
+        </Link>
 
         <nav className={styles.navItems}>
           {navData.map((item, index) => {
@@ -298,7 +303,7 @@ export default function Header() {
                       <div className={styles.promoOverlay} style={{ background: `${currentMega.accent}cc` }}>
                         <span className={styles.promoLabel}>{currentMega.promoLabel}</span>
                         <span className={styles.promoTitle}>{currentMega.title}</span>
-                        <a href="#" className={styles.promoLink} style={{ color: currentMega.color }}>
+                        <a href={currentMega.promoLink} className={styles.promoLink} style={{ color: currentMega.color }}>
                           Learn more <ChevronRight />
                         </a>
                       </div>

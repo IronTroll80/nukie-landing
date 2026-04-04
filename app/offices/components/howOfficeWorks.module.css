@@ -1,0 +1,176 @@
+.section {
+  background: #003883;
+  padding: 5rem 1.5rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: center;
+}
+
+.badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(4px);
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.step:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.connector {
+  display: none;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.stepNum {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.3);
+}
+
+.stepTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.stepDesc {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .step {
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    padding: 1.5rem 2rem;
+    position: relative;
+  }
+
+  .step:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: transparent;
+    border-radius: 14px;
+  }
+
+  .connector {
+    display: block;
+    position: absolute;
+    top: calc(2rem + 26px);
+    right: -1px;
+    width: 2px;
+    height: 28px;
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-50%) rotate(90deg) scaleX(3);
+    transform-origin: center;
+    pointer-events: none;
+  }
+
+  .iconWrap {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.25s;
+  }
+
+  .step:hover .iconWrap {
+    background: rgba(255,255,255,0.18);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 6rem 2rem;
+  }
+}

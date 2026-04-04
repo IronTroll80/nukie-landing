@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './footer.module.css'
+import Link from 'next/link'
 
 export default function Footer (){
     return(
@@ -16,9 +17,9 @@ export default function Footer (){
                 </div>
                 <div className= {styles.footerSection}>
                     <b>Platform</b>
-                    <p>For Estates</p>
-                    <p>For Schools</p>
-                    <p>For Offices</p>
+                    <Link href="/estates"><p>For Estates</p></Link>
+                    <Link href="/schools"><p>For Schools</p></Link>
+                    <Link href="/offices"><p>For Offices</p></Link>
                 </div>
                 <div className= {styles.footerSection}>
                     <b>Get In Touch</b>

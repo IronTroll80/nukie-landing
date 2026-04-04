@@ -20,7 +20,7 @@ export default function Hero (){
             </div>
             <div className= {styles.right}>
                 <video 
-                    src="/hero.mp4" 
+                    src="/hero2.mp4" 
                     autoPlay 
                     muted 
                     loop 

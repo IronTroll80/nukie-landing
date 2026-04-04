@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Image from 'next/image'
 import styles from './productsSection.module.css'
 import { CgArrowLeft, CgArrowRight } from 'react-icons/cg'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -16,10 +17,7 @@ const products = [
     accent: '#003883',
     gradient: 'linear-gradient(135deg, #003883 0%, #1a5fb4 60%, #2d7dd2 100%)',
     tag: 'Education',
-    // stat: '200+',
-    // statLabel: 'Schools trust NukiePass',
-    stat: '',
-    statLabel: '',
+    image: '/school.png',
     features: [
       { icon: <MdSecurity />, label: 'Student Movement Verification' },
       { icon: <MdDirectionsBus />, label: 'Bus Handover Tracking' },
@@ -34,8 +32,7 @@ const products = [
     accent: '#003883',
     gradient: 'linear-gradient(135deg, #003883 0%, #1a5fb4 60%, #2d7dd2 100%)',
     tag: 'Residential',
-    stat: '',
-    statLabel: '',
+    image: '/estate.png',
     features: [
       { icon: <MdGroup />, label: 'Manage Residents' },
       { icon: <MdVisibility />, label: 'Visitor Management' },
@@ -50,8 +47,7 @@ const products = [
     accent: '#003883',
     gradient: 'linear-gradient(135deg, #003883 0%, #1a5fb4 60%, #2d7dd2 100%)',
     tag: 'Corporate',
-    stat: '',
-    statLabel: '',
+    image: '/hero.png',
     features: [
       { icon: <MdPeople />, label: 'Employee Management' },
       { icon: <MdMonitorHeart />, label: 'Staff Performance' },
@@ -157,37 +153,48 @@ export default function ProductSection() {
             >
               <div className={styles.cardNoise} />
 
-              <div className={styles.cardTop}>
-                <span className={styles.cardIcon} style={{ background: 'rgba(255,255,255,0.15)' }}>
-                  {product.icon}
-                </span>
-                <span className={styles.cardTagBadge}>{product.tag}</span>
+              <div className={styles.cardLeft}>
+                <div className={styles.cardTop}>
+                  <span className={styles.cardIcon} style={{ background: 'rgba(255,255,255,0.15)' }}>
+                    {product.icon}
+                  </span>
+                  <span className={styles.cardTagBadge}>{product.tag}</span>
+                </div>
+
+                <div className={styles.cardBottom}>
+                  <div className={styles.features}>
+                    {product.features.map((f, i) => (
+                      <span key={i} className={styles.featurePill}>
+                        <span className={styles.pillIcon}>{f.icon}</span>
+                        {f.label}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className={styles.cardText}>
+                    <h3>{product.title}</h3>
+                    <p>{product.description}</p>
+                  </div>
+
+                  <div className={styles.cardFooter}>
+                    <a href="#" className={styles.cardCta}>
+                      Learn more <CgArrowRight />
+                    </a>
+                  </div>
+                </div>
               </div>
 
-              <div className={styles.cardBottom}>
-                <div className={styles.features}>
-                  {product.features.map((f, i) => (
-                    <span key={i} className={styles.featurePill}>
-                      <span className={styles.pillIcon}>{f.icon}</span>
-                      {f.label}
-                    </span>
-                  ))}
-                </div>
-
-                <div className={styles.cardText}>
-                  <h3>{product.title}</h3>
-                  <p>{product.description}</p>
-                </div>
-
-                <div className={styles.cardFooter}>
-                  <div className={styles.stat}>
-                    <span className={styles.statNum}>{product.stat}</span>
-                    <span className={styles.statLabel}>{product.statLabel}</span>
-                  </div>
-                  <a href="#" className={styles.cardCta}>
-                    Learn more <CgArrowRight />
-                  </a>
-                </div>
+              <div className={styles.cardImageWrap}>
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  className={styles.cardImage}
+                />
+                <div
+                  className={styles.cardImageOverlay}
+                  style={{ background: `linear-gradient(to right, ${product.accent}cc, transparent 60%)` }}
+                />
               </div>
             </motion.div>
           )

@@ -69,14 +69,13 @@
   border: none;
   background: #ddd;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s, width 0.3s;
+  transition: background 0.3s, width 0.3s;
   padding: 0;
 }
 
 .dotActive {
   width: 24px;
   border-radius: 4px;
-  transform: none;
 }
 
 .buttons {
@@ -121,17 +120,14 @@
 
 .product {
   flex: 0 0 100%;
-  min-height: 450px;
-  height: 500px;
+  min-height: 440px;
   border-radius: 1.25rem;
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   scroll-snap-align: start;
   cursor: pointer;
 }
@@ -142,6 +138,31 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   opacity: 0.5;
+  z-index: 1;
+}
+
+.cardLeft {
+  position: relative;
+  z-index: 2;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.cardImageWrap {
+  display: none;
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.cardImageOverlay {
+  position: absolute;
+  inset: 0;
 }
 
 .cardTop {
@@ -216,28 +237,8 @@
 .cardFooter {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.statNum {
-  font-size: 1.5rem;
-  font-weight:600;
-  line-height: 1;
-}
-
-.statLabel {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 2px;
 }
 
 .cardCta {
@@ -263,7 +264,20 @@
 
 @media (min-width: 768px) {
   .product {
-    min-height: 520px;
+    flex-direction: row;
+    min-height: 460px;
+  }
+
+  .cardLeft {
+    flex: 0 0 55%;
+    padding: 2rem 2rem 2rem 2.25rem;
+  }
+
+  .cardImageWrap {
+    display: block;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
   }
 
   .top {
@@ -274,6 +288,10 @@
 @media (min-width: 1024px) {
   .container {
     padding: 4rem 2rem;
+  }
+
+  .cardLeft {
+    flex: 0 0 52%;
   }
 
   .product {

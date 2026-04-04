@@ -98,7 +98,7 @@ export default function CTA (){
 
                 whileTap={{ scale: 0.95 }}
             >
-                <p>Contact a Member of the team</p>
+                <p>Sign Up With NukiePass</p>
             </motion.button>
 
         </motion.div>
